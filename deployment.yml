@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netcoreapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: netcoreapi-pod
+  template:
+    metadata:
+      labels:
+        app: netcoreapi-pod
+    spec:
+      containers:
+      - name: netcoreapi-container
+        image: netcoreapi:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
